@@ -1,3 +1,4 @@
+const blacklistModel = require("../models/blacklist.model");
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 
@@ -95,7 +96,17 @@ const profileController = async( req, res) => {
 }
 
 const logOutControllers = async ( req, res) => {
-   
+   const token = req.cookies.token;
+
+   res.clearCookie("token")
+
+   await blacklistModel.create({
+    token
+   })
+
+   res.status(200).json({
+    message: "logout successfully."
+   });
 }
 
 module.exports = {
