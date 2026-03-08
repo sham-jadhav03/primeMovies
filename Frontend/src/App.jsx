@@ -1,12 +1,11 @@
-import './App.css'
-import Register from './features/pages/auth/Register'
+import AppRoutes from './routes/AppRoutes'
 
 function App() {
  
 
   return (
     <>
-      <Register />
+      <AppRoutes />
     </>
   )
 }
