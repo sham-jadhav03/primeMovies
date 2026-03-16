@@ -1,21 +1,44 @@
-import React from 'react'
-import "../../styles/auth.css"
+import React, { useState } from "react";
+import "../../styles/auth.css";
 
 const Login = () => {
-    return (
-        <>
-            <main className="login-page">
-                <div>
-                    <form>
-                        <h1>Login</h1>
-                        <input type="text" placeholder="Username" />
-                        <input type="password" placeholder="Password" />
-                        <button type="submit">Login</button>
-                    </form>
-                </div>
-            </main>
-        </>
-    )
-}
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-export default Login
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <>
+      <main className="login-page">
+        <div className="form">
+          <form onSubmit={handleSubmit}>
+            <h1>Login</h1>
+            <input
+              type="text"
+              placeholder="Enter username"
+              name="username"
+              value={username}
+              onInput={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              name="password"
+              value={password}
+              onInput={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </main>
+    </>
+  );
+};
+
+export default Login;
