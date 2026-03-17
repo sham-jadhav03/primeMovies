@@ -1,24 +1,111 @@
-.form-page{
+.login-page, .auth-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    min-height: 100vh;
+    /* Soft, warm, humanistic gradient */
+    background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.form input{
+.form {
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent */
+    backdrop-filter: blur(10px); /* Subtle glassmorphism */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3rem 2.5rem;
+    border-radius: 16px; /* Softer, organic corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03), 0 4px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-inline: 2rem;
-    padding-inline: 3rem; 
+    flex-direction: column;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #2d3748; /* Softer than pure black */
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.form input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #4a5568;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.form input:focus {
+    background-color: #ffffff;
+    border-color: #a3bffa;
+    box-shadow: 0 0 0 4px rgba(163, 191, 250, 0.15);
+}
+
+.form input::placeholder {
+    color: #a0aec0;
+}
+
+.form button {
+    margin-top: 0.75rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    /* Aesthetic gradient for the button */
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: #ffffff;
     border: none;
-    color: gray;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(118, 75, 162, 0.2);
 }
 
-.form button{
-    margin-inline: 2rem;
-    padding-inline: 1.5rem;
-    background-color: red;
-    border-radius: 1rem;
-    cursor: pointer;
+.form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(118, 75, 162, 0.3);
+}
+
+.form button:active {
+    transform: translateY(0);
+}
+
+.form p {
+    text-align: center;
+    margin-top: 1.75rem;
+    margin-bottom: 0;
+    color: #718096;
+    font-size: 0.95rem;
+}
+
+.form p a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.form p a:hover {
+    color: #764ba2;
+    text-decoration: underline;
 }

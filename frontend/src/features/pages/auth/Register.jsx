@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../../styles/auth.css";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const { loading, handleRegister } = useAuth();
+
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [focused, setFocused] = useState("");
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await handleRegister({ username, email, password });
+
+    navigate("/");
   };
 
   return (
     <main className="auth-page">
       <div className="form">
         <form onSubmit={handleSubmit}>
+          <h1>Register</h1>
           <input
             type="text"
             placeholder="Enter Username"
@@ -45,7 +54,9 @@ const Register = () => {
           />
           <button type="submit">Register</button>
         </form>
-        <p>Already </p>
+        <p>
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
       </div>
     </main>
   );

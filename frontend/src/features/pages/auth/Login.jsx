@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import "../../styles/auth.css";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+
+  const { loading, handleLogin } = useAuth()
+
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await handleLogin({ email, password })
+
+    navigate('/')
   };
 
   return (
@@ -17,11 +29,11 @@ const Login = () => {
             <h1>Login</h1>
             <input
               type="text"
-              placeholder="Enter username"
-              name="username"
-              value={username}
+              placeholder="Enter email"
+              name="email"
+              value={email}
               onInput={(e) => {
-                setUsername(e.target.value);
+                setEmail(e.target.value);
               }}
             />
             <input
@@ -35,6 +47,7 @@ const Login = () => {
             />
             <button type="submit">Login</button>
           </form>
+          <p>Don't have an account? <Link to="/register">Register here</Link></p>
         </div>
       </main>
     </>
